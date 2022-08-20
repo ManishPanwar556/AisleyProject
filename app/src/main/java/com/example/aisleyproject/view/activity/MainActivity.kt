@@ -1,19 +1,26 @@
-package com.example.aisleyproject
+package com.example.aisleyproject.view.activity
 
+import android.content.Context
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.core.content.res.ResourcesCompat
-import androidx.navigation.findNavController
+import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import com.example.aisleyproject.R
 import com.example.aisleyproject.databinding.ActivityMainBinding
+import com.example.aisleyproject.utils.ConstantUtils
 import com.example.aisleyproject.viewModel.AisleyViewModel
 
 class MainActivity : AppCompatActivity() {
     private val viewModel by viewModels<AisleyViewModel>()
     private lateinit var binding: ActivityMainBinding
+    private lateinit var navController:NavController
+    private val sharedPreference by lazy {
+        getSharedPreferences(ConstantUtils.SHAREDPREFNAME, Context.MODE_PRIVATE)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -22,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         addBadges()
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragmentContainer) as NavHostFragment
-        val navController = navHostFragment.navController
+         navController = navHostFragment.navController
         navController.addOnDestinationChangedListener { _, destination, _ ->
             if (destination.id == R.id.dashBoardFragment) {
                 binding.bottomNav.visibility = View.VISIBLE
@@ -30,6 +37,14 @@ class MainActivity : AppCompatActivity() {
                 binding.bottomNav.visibility = View.GONE
             }
 
+        }
+
+        checkUserLoggedIn()
+    }
+    private fun checkUserLoggedIn(){
+        val token=sharedPreference.getString(ConstantUtils.TOKEN,"")
+        if(token!=null&&token.isNotEmpty()){
+            navController.navigate(R.id.action_phoneNumberFragment_to_dashBoardFragment)
         }
     }
 
@@ -44,6 +59,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+
+    }
     private fun addBadges() {
         binding.apply {
             val dashBoardItem=bottomNav.getOrCreateBadge(R.id.dashBoardFragment)

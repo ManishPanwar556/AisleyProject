@@ -2,7 +2,6 @@ package com.example.aisleyproject.view.fragments
 
 import android.content.Context
 import android.os.Bundle
-import android.provider.SyncStateContract
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,17 +9,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import com.example.aisleyproject.R
 import com.example.aisleyproject.databinding.FragmentOtpBinding
-import com.example.aisleyproject.model.response.VerifyPhoneResponse
-import com.example.aisleyproject.utils.ApiResponse
+import com.example.aisleyproject.model.response.phone.VerifyPhoneResponse
 import com.example.aisleyproject.utils.ConstantUtils
 import com.example.aisleyproject.utils.Error
 import com.example.aisleyproject.utils.Success
 import com.example.aisleyproject.viewModel.AisleyViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.async
 
 class OtpFragment : Fragment() {
      private val viewModel by viewModels<AisleyViewModel>()

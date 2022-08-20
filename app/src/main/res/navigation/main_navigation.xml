@@ -13,6 +13,11 @@
         <action
             android:id="@+id/action_phoneNumberFragment_to_otpFragment"
             app:destination="@id/otpFragment" />
+        <action
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/phoneNumberFragment"
+            android:id="@+id/action_phoneNumberFragment_to_dashBoardFragment"
+            app:destination="@+id/dashBoardFragment"/>
 
     </fragment>
     <fragment

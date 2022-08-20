@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.edit
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.aisleyproject.R
@@ -33,15 +34,19 @@ class DashBoardFragment : Fragment() {
     private lateinit var binding: FragmentDashBoardBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.getString(ConstantUtils.TOKEN)?.let {
-            token=it
-            with (sharedPreference.edit()) {
-                putString(ConstantUtils.TOKEN, it)
-                apply()
+        token=sharedPreference.getString(ConstantUtils.TOKEN,"")
+        if(token==null||token!!.isEmpty()) {
+            arguments?.getString(ConstantUtils.TOKEN)?.let {
+                token = it
+                with(sharedPreference.edit()) {
+                    putString(ConstantUtils.TOKEN, it)
+                    apply()
+                }
             }
         }
 
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -2,8 +2,8 @@ package com.example.aisleyproject.model.network
 
 import com.example.aisleyproject.model.request.PhoneBodyRequest
 import com.example.aisleyproject.model.request.VerifyPhoneRequest
-import com.example.aisleyproject.model.response.RegisterPhoneResponse
-import com.example.aisleyproject.model.response.VerifyPhoneResponse
+import com.example.aisleyproject.model.response.phone.RegisterPhoneResponse
+import com.example.aisleyproject.model.response.phone.VerifyPhoneResponse
 import com.example.aisleyproject.model.response.userData.UserDataResponse
 import retrofit2.Response
 import retrofit2.http.Body
