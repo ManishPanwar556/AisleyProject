@@ -11,7 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.aisleyproject.R
 import com.example.aisleyproject.databinding.FragmentPhoneNumberBinding
-import com.example.aisleyproject.model.response.RegisterPhoneResponse
+import com.example.aisleyproject.model.response.phone.RegisterPhoneResponse
 import com.example.aisleyproject.utils.ConstantUtils
 import com.example.aisleyproject.utils.Error
 import com.example.aisleyproject.utils.Success
