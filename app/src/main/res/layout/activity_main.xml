@@ -7,6 +7,7 @@
     tools:context=".view.activity.MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
+
         android:name="androidx.navigation.fragment.NavHostFragment"
         app:defaultNavHost="true"
         app:navGraph="@navigation/main_navigation"
@@ -26,5 +27,6 @@
     android:id="@+id/bottomNav"
     app:itemIconTint="@drawable/ic_select_color"
     app:itemTextColor="@drawable/ic_select_color"
+    android:background="@color/white"
     app:menu="@menu/bottom_nav_menu_item"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
