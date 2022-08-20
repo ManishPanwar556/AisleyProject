@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.aisleyproject.R
 import com.example.aisleyproject.databinding.FragmentPhoneNumberBinding
+import com.example.aisleyproject.model.response.RegisterPhoneResponse
 import com.example.aisleyproject.utils.ConstantUtils
 import com.example.aisleyproject.utils.Error
 import com.example.aisleyproject.utils.Success
@@ -48,12 +49,22 @@ class PhoneNumberFragment : Fragment() {
                     navigate to
                     otp verify screen
                      */
-                    Log.d("NAVIHGATE TAG","NAVIGATINGLLLLLLL")
-                    val bundle=Bundle()
-                    bundle.putString(ConstantUtils.PHONE_NUMBER,"+91${binding.phoneNumberEt.text}")
-                    findNavController().navigate(R.id.action_phoneNumberFragment_to_otpFragment,bundle)
-                    viewModel.emptyPhoneRegisterLiveData()
-
+                    val data=it.data as RegisterPhoneResponse
+                    if(data.status) {
+                        val bundle = Bundle()
+                        bundle.putString(
+                            ConstantUtils.PHONE_NUMBER,
+                            "+91${binding.phoneNumberEt.text}"
+                        )
+                        findNavController().navigate(
+                            R.id.action_phoneNumberFragment_to_otpFragment,
+                            bundle
+                        )
+                        viewModel.emptyPhoneRegisterLiveData()
+                    }
+                    else{
+                        Toast.makeText(requireContext(),"Enter valid number",Toast.LENGTH_SHORT).show()
+                    }
                 }
                 is Error->{
 

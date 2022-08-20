@@ -27,6 +27,9 @@ class AisleyViewModel : ViewModel() {
     private val _phoneRegisterData = MutableLiveData<ApiResponse>()
     val phoneRegisterData: LiveData<ApiResponse> = _phoneRegisterData
 
+    private val _userData=MutableLiveData<ApiResponse>()
+    val userData:LiveData<ApiResponse> = _userData
+
 
     private val timerCallback = object : CountDownTimer(60000, 1000) {
         override fun onTick(millisUntilFinished: Long) {
@@ -69,6 +72,15 @@ class AisleyViewModel : ViewModel() {
 
     fun startTimer() {
         timerCallback.start()
+    }
+
+    fun getUserData(token:String){
+        viewModelScope.launch(Dispatchers.IO) {
+            val response=repository.getUserDetails(token)
+            withContext(Dispatchers.IO){
+                _userData.postValue(response)
+            }
+        }
     }
 
 

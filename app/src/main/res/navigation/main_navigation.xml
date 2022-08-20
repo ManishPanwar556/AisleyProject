@@ -11,7 +11,6 @@
         android:label="fragment_phone_number"
         tools:layout="@layout/fragment_phone_number" >
         <action
-            app:popUpToInclusive="true"
             android:id="@+id/action_phoneNumberFragment_to_otpFragment"
             app:destination="@id/otpFragment" />
 
@@ -22,5 +21,15 @@
         android:label="fragment_otp"
         tools:layout="@layout/fragment_otp" >
 
+        <action
+            app:popUpTo="@id/phoneNumberFragment"
+            app:popUpToInclusive="true"
+            android:id="@+id/action_otpFragment_to_dashBoardFragment"
+            app:destination="@id/dashBoardFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/dashBoardFragment"
+        android:name="com.example.aisleyproject.view.fragments.DashBoardFragment"
+        android:label="fragment_dash_board"
+        tools:layout="@layout/fragment_dash_board" />
 </navigation>

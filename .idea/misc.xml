@@ -4,9 +4,14 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/hp/androidpracticeprojects/AisleyProject/app/src/main/res/drawable/ic_card_border.xml" value="0.1545" />
+        <entry key="..\:/Users/hp/androidpracticeprojects/AisleyProject/app/src/main/res/drawable/ic_gradient_backgrounf.xml" value="0.1" />
+        <entry key="..\:/Users/hp/androidpracticeprojects/AisleyProject/app/src/main/res/drawable/ic_select_color.xml" value="0.1545" />
         <entry key="..\:/Users/hp/androidpracticeprojects/AisleyProject/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hp/androidpracticeprojects/AisleyProject/app/src/main/res/layout/fragment_dash_board.xml" value="0.18" />
         <entry key="..\:/Users/hp/androidpracticeprojects/AisleyProject/app/src/main/res/layout/fragment_otp.xml" value="0.22" />
         <entry key="..\:/Users/hp/androidpracticeprojects/AisleyProject/app/src/main/res/layout/fragment_phone_number.xml" value="0.33" />
+        <entry key="..\:/Users/hp/androidpracticeprojects/AisleyProject/app/src/main/res/layout/viewholder_profile_item.xml" value="0.18" />
+        <entry key="..\:/Users/hp/androidpracticeprojects/AisleyProject/app/src/main/res/menu/bottom_nav_menu_item.xml" value="0.1" />
       </map>
     </option>
   </component>

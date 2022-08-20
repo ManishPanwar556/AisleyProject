@@ -6,4 +6,8 @@
     <string name="enter_your_phone_number">Enter Your\nPhone Number</string>
     <string name="cont">Continue</string>
     <string name="enter_the_otp">Enter The \nOTP</string>
+    <string name="notes">Notes</string>
+    <string name="personal_messages_to_you">Personal messages to you</string>
+    <string name="premium_members_can_nview_all_their_likes_at_once">Premium members can\nview all their likes at once</string>
+    <string name="upgrade">Upgrade</string>
 </resources>

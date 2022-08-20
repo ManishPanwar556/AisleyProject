@@ -1,5 +1,6 @@
 package com.example.aisleyproject.model.repository
 
+import android.util.Log
 import com.example.aisleyproject.model.network.AisleyApiInterface
 import com.example.aisleyproject.model.request.PhoneBodyRequest
 import com.example.aisleyproject.model.request.VerifyPhoneRequest
@@ -39,6 +40,22 @@ class AisleyRespository {
                 Error(message = response.message())
             }
         } catch (e:Exception){
+            Error(message = e.message!!)
+        }
+    }
+
+    suspend fun getUserDetails(token:String):ApiResponse{
+        return try{
+            Log.d("TAG","tOKEN $token")
+            val response=aisleyApi.getUserData("Bearer $token")
+            if(response.isSuccessful){
+                Success(data=response.body())
+            }
+            else{
+                Error(message = response.message())
+            }
+        }
+        catch (e:Exception){
             Error(message = e.message!!)
         }
     }

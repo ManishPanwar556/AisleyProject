@@ -2,12 +2,14 @@ package com.example.aisleyproject.view.fragments
 
 import android.content.Context
 import android.os.Bundle
+import android.provider.SyncStateContract
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.aisleyproject.R
 import com.example.aisleyproject.databinding.FragmentOtpBinding
@@ -17,6 +19,8 @@ import com.example.aisleyproject.utils.ConstantUtils
 import com.example.aisleyproject.utils.Error
 import com.example.aisleyproject.utils.Success
 import com.example.aisleyproject.viewModel.AisleyViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.async
 
 class OtpFragment : Fragment() {
      private val viewModel by viewModels<AisleyViewModel>()
@@ -72,11 +76,21 @@ class OtpFragment : Fragment() {
     private fun initObservers(){
         viewModel.phoneVerifiedData.observe(viewLifecycleOwner){
             when(it){
-                is Success<*>->{
-                    val data=it.data as VerifyPhoneResponse
-                    sharedPreferences.edit().apply{
-                        putString(ConstantUtils.OTP_KEY,data.token)
-                    }.apply()
+                is Success<*>-> {
+                    if (it.data != null) {
+                        val data = it.data as VerifyPhoneResponse
+                        if(data.token!=null&&data.token.isNotEmpty()) {
+                            val bundle=Bundle()
+                            bundle.putString(ConstantUtils.TOKEN,data.token)
+                            findNavController().navigate(R.id.action_otpFragment_to_dashBoardFragment,bundle)
+                        }
+                        else{
+                            Toast.makeText(requireContext(),"Otp is incorrect",Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                    else{
+                        Toast.makeText(requireContext(),"Something went wrong",Toast.LENGTH_SHORT).show()
+                    }
                 }
                 is Error->{
                     Toast.makeText(requireContext(),it.message,Toast.LENGTH_SHORT).show()
